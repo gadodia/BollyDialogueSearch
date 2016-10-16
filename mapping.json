@@ -1,0 +1,37 @@
+{
+    "settings": {
+        "number_of_shards" : 1,
+        "number_of_replicas": 0,
+        "analysis": {
+            "filter": {
+                "autocomplete_filter": {
+                    "type":     "edge_ngram",
+                    "min_gram": 2,
+                    "max_gram": 15
+                }
+            },
+            "analyzer": {
+                "autocomplete": {
+                    "type":      "custom",
+                    "tokenizer": "standard",
+                    "filter": [
+                        "lowercase",
+                        "autocomplete_filter" 
+                    ]
+                }
+            }
+        }
+    },
+    "mappings": {
+        "dialogues": {
+            "properties": {
+                "url": {"type": "string"},
+                "movie_name": {"type": "string", "analyzer": "autocomplete", "search_analyzer": "standard"},
+                "actor_name": {"type": "string", "analyzer": "autocomplete", "search_analyzer": "standard"},
+                "hindi_diag": {"type": "string", "analyzer": "autocomplete", "search_analyzer": "standard"},
+                "english_diag": {"type": "string", "analyzer": "autocomplete", "search_analyzer": "standard"},
+                "cat": {"type": "string"}
+            }
+        }
+    }
+}

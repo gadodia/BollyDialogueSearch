@@ -1,0 +1,30 @@
+<h1>Bollywood Movies</h1>
+
+<div style="margin-top: 60px;">
+    <span class="col-md-6 col-md-offset-3">
+    <input type="text" class="form-control" ng-model="searchString" placeholder='Search: e.g. Tiger Shroff or any dialogue' ng-change="search()"/>
+    </span>
+</div>
+
+<div class="clearfix"></div>
+
+<table id="list_of_movies" class="table table-striped table-condensed" style="margin-top: 60px;">
+    <thead>
+    <tr>
+        <th style="min-width: 80px;">Name</th>
+        <th style="min-width: 80px;">Actor</th>
+        <th style="min-width: 80px;">Dialogue</th>
+        <th style="min-width: 80px;">Dialogue in English</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="result in results">
+        <td><a href="#/movies/{{result.id}}">{{ result.movie_name }}</a></td>
+        <td>{{ result.actor_name }}</td>
+        <td>{{ result.hindi_diag }}</td>
+        <td>{{ result.english_diag }}</td>
+    </tr>
+    </tbody>
+</table>
+
+<a href="#/movies" class="btn btn-small btn-primary">Full List</a>
